@@ -8,6 +8,7 @@ import { uploadPhoto, uploadDocument, whatsappReminder } from '../lib/storage'
 import { t as tr } from '../lib/i18n'
 import { Icon } from '../lib/icons'
 import Leads from './Leads'
+import Shortcuts from './Shortcuts'
 
 const NAV_ITEMS = [
   { section: 'main' },
@@ -210,7 +211,7 @@ export default function App() {
               <span className="user-badge">{user}</span>
             </div>
           </header>
-          <div className="content">
+          <div className="content-row">           <div className="content">
             {v === 'dash' && <Dash {...P} />}
             {v === 'stu' && <Stu {...P} />}
             {v === 'prof' && <Prof id={arg} {...P} />}
@@ -223,6 +224,8 @@ export default function App() {
             {v === 'tch' && isAdmin && <Teachers {...P} />}
             {v === 'staff' && isAdmin && <Staff {...P} />}
             {v === 'leads' && <Leads {...P} />}
+          </div>
+          <Shortcuts {...P} />
           </div>
         </div>
       </div>
