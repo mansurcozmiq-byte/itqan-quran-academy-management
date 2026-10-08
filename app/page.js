@@ -7,12 +7,14 @@ import { formHTML, receiptHTML, idCardHTML, certificateHTML } from '../lib/print
 import { uploadPhoto, uploadDocument, whatsappReminder } from '../lib/storage'
 import { t as tr } from '../lib/i18n'
 import { Icon } from '../lib/icons'
+import Leads from './Leads'
 
 const NAV_ITEMS = [
   { section: 'main' },
   { id: 'dash', labelKey: 'dashboard', icon: 'LayoutDashboard' },
   { id: 'stu', labelKey: 'students', icon: 'Users' },
   { id: 'new', labelKey: 'newAdmission', icon: 'UserPlus' },
+  { id: 'leads', labelKey: 'leads', icon: 'Inbox' },
   { id: 'att', labelKey: 'attendance', icon: 'ClipboardCheck' },
   { section: 'finance' },
   { id: 'pay', labelKey: 'payments', icon: 'Wallet', adminOnly: true },
@@ -66,7 +68,7 @@ export default function App() {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [lang, setLang] = useState('en')
-  const [S, setS] = useState({ courses: [], students: [], pays: [], teachers: [], expenses: [], attendance: [], docs: [], profiles: [], set: {} })
+  const [S, setS] = useState({ courses: [], students: [], pays: [], teachers: [], expenses: [], attendance: [], docs: [], profiles: [], leads: [], set: {} })
 
   const tt = (key) => tr(lang, key)
   const isAdmin = role === 'admin'
@@ -77,7 +79,7 @@ export default function App() {
   }, [])
 
   const load = async () => {
-    const [c, s, p, t, te, ex, at, docs, prof] = await Promise.all([
+    const [c, s, p, t, te, ex, at, docs, prof, leads] = await Promise.all([
       sb.from('courses').select('*').order('name'),
       sb.from('students').select('*').order('created_at', { ascending: false }),
       sb.from('payments').select('*').order('paid_on', { ascending: false }),
@@ -87,11 +89,12 @@ export default function App() {
       sb.from('attendance').select('*').gte('date', ym() + '-01').order('date', { ascending: false }),
       sb.from('documents').select('*').order('uploaded_at', { ascending: false }),
       sb.from('profiles').select('*'),
+      sb.from('leads').select('*').order('created_at', { ascending: false }),
     ])
     setS({
       courses: c.data || [], students: s.data || [], pays: p.data || [],
       teachers: te.data || [], expenses: ex.data || [], attendance: at.data || [],
-      docs: docs.data || [], profiles: prof.data || [],
+      docs: docs.data || [], profiles: prof.data || [], leads: leads.data || [],
       set: Object.fromEntries((t.data || []).map((r) => [r.k, +r.v])),
     })
   }
@@ -137,7 +140,7 @@ export default function App() {
   const pageTitle = {
     dash: tt('dashboard'), stu: tt('students'), new: tt('newAdmission'), prof: 'Student Profile',
     pay: tt('payments'), fee: tt('feesCourses'), att: tt('attendance'), due: tt('dueList'),
-    exp: tt('expenses'), tch: tt('teachers'), staff: tt('staff'),
+    exp: tt('expenses'), tch: tt('teachers'), staff: tt('staff'), leads: tt('leads'),
   }
 
   if (!ready) return null
@@ -219,6 +222,7 @@ export default function App() {
             {v === 'exp' && isAdmin && <Expenses {...P} />}
             {v === 'tch' && isAdmin && <Teachers {...P} />}
             {v === 'staff' && isAdmin && <Staff {...P} />}
+            {v === 'leads' && <Leads {...P} />}
           </div>
         </div>
       </div>
