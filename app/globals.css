@@ -1,0 +1,17 @@
+
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 'Hind Siliguri',system-ui,sans-serif;background:#f4f6f4;color:#1b1b1b}
+nav{background:#0b6b2f;display:flex;flex-wrap:wrap;gap:4px;padding:8px}nav button{background:none;border:0;color:#fff;padding:8px 12px;border-radius:6px;cursor:pointer;font:inherit}nav button.on{background:#0a8f3e}
+main{max-width:1000px;margin:auto;padding:16px}.c{background:#fff;border-radius:10px;padding:14px;margin-bottom:14px;box-shadow:0 1px 3px #0002}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;align-items:end}
+input,select{width:100%;padding:8px;border:1px solid #ccc;border-radius:6px;font:inherit}label{font-size:12px;color:#555}
+button.p{background:#0b6b2f;color:#fff;border:0;padding:9px 16px;border-radius:6px;cursor:pointer;font:inherit}button.s{background:#e8eee8;border:0;padding:5px 10px;border-radius:6px;cursor:pointer;font:inherit}
+table{width:100%;border-collapse:collapse}td,th{padding:7px;border-bottom:1px solid #eee;text-align:left}.n{font-size:26px;font-weight:700;color:#0b6b2f}
+#pr{display:none}#pr *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+@media print{#app{display:none!important}#pr{display:block}body{background:#fff}@page{size:A4;margin:0}}
+.pg{width:210mm;min-height:297mm;background:#fff;page-break-after:always;font-size:15px}
+.hd{background:#0b6b2f;color:#fff;padding:9mm 12mm 6mm}.hd h1{margin:0;font-size:38px;line-height:1.2}.hd small{letter-spacing:3px;opacity:.6}.hd p{margin:4px 0 0;font-size:13px}
+.pb{padding:4mm 12mm}.tag{background:#e39a2d;color:#fff;border-radius:14px;padding:2px 22px;display:table;margin:-12px auto 8px;font-weight:600}
+.row{display:flex;gap:18px;margin:9px 0;align-items:flex-end}.l{display:flex;gap:6px;white-space:nowrap}.l span{flex:1;border-bottom:1px dotted #777;min-height:1.5em;white-space:normal}
+.sec{background:#fbf3e4;color:#0b6b2f;font-weight:600;padding:3px 8px;margin:14px 0 6px}
+.cb{display:inline-block;width:14px;height:14px;border:1.5px solid #e39a2d;text-align:center;line-height:12px;font-size:12px;vertical-align:middle}
+.box{border:1px solid #0b6b2f;border-radius:8px;padding:6px 14px;margin-top:14px}.sig{display:flex;justify-content:space-between;margin-top:40px}.sig span{border-top:1px dotted #777;padding-top:4px}
