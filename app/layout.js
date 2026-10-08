@@ -1,10 +1,14 @@
 import './globals.css'
-export const metadata = { title: 'Itqan Quran Academy', description: 'Management System' }
+export const metadata = {
+  title: 'Itqan Quran Academy',
+  description: 'Academy Management System',
+}
 export default function Layout({ children }) {
   return (
-    <html lang="bn">
+    <html lang="en">
       <head>
-        <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600&display=swap" rel="stylesheet" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body>{children}</body>
